@@ -3,18 +3,39 @@
 import { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
+// TODO: Replace with your Formspree form ID from https://formspree.io
+const FORMSPREE_ID = "xpqkdjpw";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("loading");
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   const handleChange = (
@@ -24,6 +45,9 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    if (status === "success" || status === "error") {
+      setStatus("idle");
+    }
   };
 
   return (
@@ -156,10 +180,23 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full py-3 px-6 rounded-lg bg-accent text-background font-medium hover:opacity-90 transition-opacity"
+              disabled={status === "loading"}
+              className="w-full py-3 px-6 rounded-lg bg-accent text-background font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status === "loading" ? "Sending..." : "Send Message"}
             </button>
+
+            {status === "success" && (
+              <p className="text-accent text-center font-medium">
+                Message sent!
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="text-red-500 text-center font-medium">
+                Failed to send message. Please try again.
+              </p>
+            )}
           </form>
         </div>
       </div>
