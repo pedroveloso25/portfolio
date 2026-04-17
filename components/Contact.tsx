@@ -86,7 +86,7 @@ export default function Contact() {
                 <FaGithub className="text-2xl" />
               </a>
               <a
-                href="https://linkedin.com/in/pedroveloso25"
+                href="https://www.linkedin.com/in/pedro-rebou%C3%A7as-veloso"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 rounded-lg bg-surface border border-border hover:border-accent hover:text-accent transition-all"
