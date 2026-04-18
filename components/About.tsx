@@ -31,7 +31,7 @@ export default function About() {
               <p className="text-sm text-text-secondary leading-relaxed flex gap-3">
                 <span className="text-accent shrink-0">🎓</span>
                 <span>
-                  Currently studying Data Science for Business at UFPB — a program that bridges technical depth with communication, storytelling, and business thinking. I don't just build models; I translate them into decisions.
+                  Currently studying Data Science for Business at UFPB — a graduation that bridges technical depth with communication, storytelling, and business thinking. I don't just build models; I translate them into decisions.
                 </span>
               </p>
             </div>
