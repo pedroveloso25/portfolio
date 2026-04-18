@@ -26,6 +26,15 @@ export default function About() {
             <p className="text-lg text-text-secondary leading-relaxed">
               I'm also part of TAIL (Technology and Artificial Intelligence League) — the largest academic AI league in Northern/Northeastern Brazil — where I develop projects and research in AI.
             </p>
+
+            <div className="mt-6 p-4 border-l-2 border-accent/50 bg-surface/50 rounded-r-lg">
+              <p className="text-sm text-text-secondary leading-relaxed flex gap-3">
+                <span className="text-accent shrink-0">🎓</span>
+                <span>
+                  Currently studying Data Science for Business at UFPB — a program that bridges technical depth with communication, storytelling, and business thinking. I don't just build models; I translate them into decisions.
+                </span>
+              </p>
+            </div>
           </div>
 
           <div className="space-y-6">
