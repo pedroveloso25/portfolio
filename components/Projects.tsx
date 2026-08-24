@@ -1,70 +1,45 @@
-import { FaGithub, FaTrophy } from "react-icons/fa";
+import { FaGithub, FaTrophy, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
     title: "Biu — WhatsApp Employment Assistant",
     badge: "4th place — Google AI Tinkerers Hackathon",
     description:
-      "Conversational assistant that helps low-literacy job seekers build a professional Harvard-style PDF resume through WhatsApp voice messages — no forms, no typing, no friction. Also finds real job listings matched to their profile.",
-    technologies: ["Python", "Gemini API", "WhatsApp Cloud API", "NLP"],
+      "Conversational assistant that builds PDF resumes from WhatsApp voice messages for people with low literacy — no forms, no typing. Also matches job listings to their profile. Team project; my role was AI engineering and research. Built with Python, Gemini API, and WhatsApp Cloud API.",
     github: "https://github.com/lucasrabay/VozPro",
+  },
+  {
+    title: "Herança Tática",
+    badge: null,
+    description:
+      "Web app comparing the tactical DNA of national teams across World Cups from 1930 to 2022. Historical football data is fragmented — each era has different detail levels. Similarity is calculated only over features present in both sources, with explicit confidence levels: high (6+ features, both StatsBomb), medium (3–5, mixed sources), low (1–2, basic historical data). Up to 12 tactical metrics when data allows. Built with React, Vite, Tailwind, Python, and FastAPI.",
+    github: "https://github.com/pedroveloso25/heranca-tatica",
+    live: "https://copa-heranca-tatica.vercel.app",
   },
   {
     title: "Fake News Detector",
     badge: null,
     description:
-      "95%+ accuracy classifier combining classical NLP, Transformers, and deep linguistic analysis on the WELFake dataset (70,000+ labeled articles). Full pipeline from data cleaning to Sentence Embeddings.",
-    technologies: ["Python", "scikit-learn", "HuggingFace", "Transformers", "NLP"],
+      "Classifier achieving 0.97 F1-score on both REAL and FAKE classes over the WELFake dataset (72,000+ labeled articles). Combines classical NLP, Transformers, and linguistic analysis. Full pipeline from data cleaning to sentence embeddings, built with Python, scikit-learn, and HuggingFace.",
     github: "https://github.com/pedroveloso25/fake-news-detector-",
-  },
-  {
-    title: "Instituto Alpargatas — Educational Urgency Mapping",
-    badge: null,
-    description:
-      "Mapped educational urgency across municipalities supported by Instituto Alpargatas using official INEP/IDEB data (approval and dropout rates), assessed the Institute's impact per region, and proposed data-driven improvement paths.",
-    technologies: ["Python", "Pandas", "Data Visualization", "INEP/IDEB"],
-    github: "https://github.com/pedroveloso25/projeto.alpargatas",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-surface/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl font-normal mb-4">
-            My <span className="accent-text">Work</span>
-          </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full"></div>
-          <p className="text-text-secondary mt-4 max-w-2xl mx-auto">
-            A selection of projects showcasing my skills in Data Science,
-            Machine Learning, and NLP.
-          </p>
-        </div>
+    <section id="projects" className="py-24 px-6">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="font-serif text-3xl md:text-4xl font-normal mb-8">
+          Work
+        </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+        <div className="space-y-8">
+          {projects.map((project) => (
             <div
               key={project.title}
-              className="gradient-border p-6 bg-surface rounded-2xl hover:translate-y-[-4px] transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="pb-8 border-b border-border last:border-b-0"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="p-3 rounded-lg bg-accent/10">
-                  <svg
-                    className="w-6 h-6 text-accent"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
+              <div className="flex items-center gap-3 mb-4">
                 <a
                   href={project.github}
                   target="_blank"
@@ -73,6 +48,16 @@ export default function Projects() {
                 >
                   <FaGithub className="text-xl" />
                 </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-secondary hover:text-accent transition-colors"
+                  >
+                    <FaExternalLinkAlt className="text-lg" />
+                  </a>
+                )}
               </div>
 
               {project.badge && (
@@ -85,20 +70,9 @@ export default function Projects() {
               )}
 
               <h3 className="text-lg font-semibold mb-3">{project.title}</h3>
-              <p className="text-text-secondary text-sm mb-4 leading-relaxed">
+              <p className="text-text-secondary text-sm leading-relaxed">
                 {project.description}
               </p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 text-xs bg-background rounded-md text-text-secondary"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>

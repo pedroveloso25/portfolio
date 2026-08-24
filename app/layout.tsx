@@ -19,8 +19,7 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Pedro Rebouças Veloso | Data Scientist",
-  description: "Data Scientist focused on building things that matter. Machine Learning, NLP, and real-world impact.",
-  keywords: ["Data Science", "Machine Learning", "Python", "NLP", "Portfolio"],
+  description: "Data Scientist. Data intern at TJPB, researcher at TAIL. João Pessoa, Brazil.",
 };
 
 export default function RootLayout({
@@ -30,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} antialiased`}>
-      <body className="min-h-screen bg-background text-foreground bg-grid">
+      <body className="min-h-screen bg-background text-foreground">
         {children}
       </body>
     </html>

@@ -53,12 +53,6 @@ export default function Navbar() {
             </a>
           ))}
         </div>
-        <a
-          href="mailto:pedroreboucasveloso@gmail.com"
-          className="hidden md:inline-flex px-4 py-2 rounded-lg bg-accent text-background font-medium text-sm hover:opacity-90 transition-opacity"
-        >
-          hire me
-        </a>
       </div>
     </nav>
   );
