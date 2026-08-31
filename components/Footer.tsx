@@ -4,15 +4,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-8 px-6 border-t border-border">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <span className="text-xl font-mono text-foreground">pedro.rv</span>
-          <span className="text-text-secondary text-sm">
-            &copy; {currentYear} All rights reserved
-          </span>
-        </div>
-
+    <footer className="py-8 px-4 sm:px-6 border-t border-border">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 text-center">
         <div className="flex items-center gap-6">
           <a
             href="https://github.com/pedroveloso25"
@@ -38,7 +31,14 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="text-text-secondary text-sm">
+        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+          <span className="text-lg font-mono text-foreground">pedro.rv</span>
+          <span className="text-text-secondary text-sm">
+            &copy; {currentYear}
+          </span>
+        </div>
+
+        <p className="text-text-secondary text-xs">
           Built with <span className="text-accent">Next.js</span> & <span className="text-accent">Tailwind</span>
         </p>
       </div>
